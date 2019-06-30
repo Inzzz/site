@@ -1,0 +1,244 @@
+<html>
+<head>
+
+      <style>
+	  input[type="checkbox"]:checked, 
+input[type="checkbox"]:not(:checked), 
+input[type="radio"]:checked, 
+input[type="radio"]:not(:checked) 
+{
+    position: absolute;
+    left: -9999px;
+}
+
+input[type="checkbox"]:checked + label, 
+input[type="checkbox"]:not(:checked) + label, 
+input[type="radio"]:checked + label, 
+input[type="radio"]:not(:checked) + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label:before, 
+input[type="checkbox"]:not(:checked) + label:before,
+input[type="radio"]:checked + label:before, 
+input[type="radio"]:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+}
+
+input[type="checkbox"]:checked + label:before, 
+input[type="checkbox"]:not(:checked) + label:before {
+    border-radius: 2px;
+}
+
+input[type="radio"]:checked + label:before, 
+input[type="radio"]:not(:checked) + label:before {
+    border-radius: 100%;
+}
+
+input[type="checkbox"]:checked + label:after, 
+input[type="checkbox"]:not(:checked) + label:after, 
+input[type="radio"]:checked + label:after, 
+input[type="radio"]:not(:checked) + label:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked + label:after, 
+input[type="checkbox"]:not(:checked) + label:after {
+    left: 3px;
+    top: 4px;
+    width: 10px;
+    height: 5px;
+    border-radius: 1px;
+    border-left: 4px solid #e145a3;
+    border-bottom: 4px solid #e145a3;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+input[type="radio"]:checked + label:after, 
+input[type="radio"]:not(:checked) + label:after {
+    left: 5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #e145a3;
+}
+
+input[type="checkbox"]:not(:checked) + label:after, 
+input[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked + label:after, 
+input[type="radio"]:checked + label:after {
+    opacity: 1;
+}
+         div.button1{
+            display:inline;
+            padding:15px;
+            color:#FFFFFF;
+            background:#FF7733;
+         } 
+         div.button2{
+            display:inline;
+            padding:15px;
+            color:#FFFFFF;
+            background:#1b00ff;
+         }
+         div.button3{
+            display:inline;
+            padding:15px;
+            color:#FFFFFF;
+            background:#00dcff;
+         } 		 
+		 div.button:hover{
+            background:#FF5500;
+         }
+      </style>
+
+</head>
+<body>
+  
+  <div id="menu">ВЫБЕРИТЕ ПРИЗНАКИ НАЛИЧИЕ ИЛИ ОТСУТСТВИЕ КОТОРЫХ ВАМ ВАЖНО!<br>ДЛЯ ВЫБОРА ПОСТАВЬТЕ ГАЛОЧКУ НАПРОТИВ И НАЖМИТЕ КНОПКУ ОТПРАВИТЬ<br></div>
+
+
+
+
+<script>
+//создадим объект
+
+
+
+
+
+var mas =["удаленность от места жительства/ работы", "кладовка", "подвал", "чердак", "счетчик на воду", "счетчик на газ", "наличие газа", "отсутствие сырости", "рабочая сантехника", "аварийный вид фундамента", "аварийный вид стен", "аварийный вид потолка", "аварийный вид пола", "вода в подвале", "косметический вид стен", "косметический вид потолков", "косметический вид полов", "размер окон и их налчие", "наличие решеток", "наличие проводки и её состояние", "удаленность от магистрали (шум,гарь)", "удаленность от реки", "вонь из мусоропровода", "вонь из баков под окнами", "тонлищна стен", "аварийный вид снаружи помещения", "косметический вид снаружи помещения", "принадлежность к тому или иному органу управления (ТСЖ, ЖЭК и прочее)", "рабочая площадь помещения", "вода холодная (почти питьевая)", "вода техническая (не питьевая)", "вода горячая", "система обеспечения слива", "отопление( своё, общее и прочее)", "вытяжка", "стоимость коммунальных услуг", "состояние приобъектного участка", "плотность с соседом (от их отсутсвия до плотного заселения)", "цена объекта и спрос через 10 лет", "удобный подъед для выгрзузки вещей", "возможность отдельного выхода", "парковка в зоне видимости", "тамбур с соседями", "антрисоли", "наличие маршрутного транспорта поблизости","необходимость прогревать помещение"," газовая колонка","возможность установить кондиционер","перебои с электричеством","туалет на улице/в доме"]
+function genmas(mas){
+	for(var i =0;i < mas.length-1;i++){
+	document.getElementById('menu').innerHTML+= '<div><input type="checkbox" id="cb'+i+'"> <label for="cb'+i+'">"'+mas[i]+'"</label></div>'
+}
+//document.getElementById('menu').innerHTML+= '<br><br><div id="go" class="button">ОТПРАВИТЬ </div>'
+	}
+	
+function generate (mass,tabl){
+
+var tabl = []
+var lab={}
+for(var i =0;i < mass.length;i++){
+ for(var j = 0;j < mass.length;j++){
+	if( i < j ){
+	var obj = {}
+	obj.name1 = mass[i] 
+	obj.name2 = mass[j] 
+	obj.val = 0	
+	tabl.push(obj)
+}
+}
+}
+console.log(tabl)
+return tabl;
+}
+function proverka(mas){
+var mas2 = []
+for(var i =0;i < mas.length-1;i++){
+	if(document.getElementById('cb'+i).checked === true){mas2.push(mas[i])}
+}
+return mas2
+}
+
+//var tabl = generate (mas);
+window.onload = function(e){  // кнопка отправить
+  //  console.log("window.onload", e, Date.now() ,window.tdiff, 
+   // (window.tdiff[1] = Date.now()) && window.tdiff.reduce(fred) ); 
+   if(localStorage.getItem("myKey")===null){
+   document.getElementById('vopros').style="display:none"
+   genmas(mas);
+   document.getElementById('go').onclick = function(){
+      document.getElementById('go').style="display:none"
+   document.getElementById('menu').style="display:none"
+   document.getElementById('vopros').style="display:block"
+	var data = generate(proverka(mas))
+	
+	var serialObj = JSON.stringify(data.sort(compareRandom)); //сериализуем его
+
+	localStorage.setItem("myKey", serialObj); //запишем его в хранилище по ключу "myKey"
+
+	var returnObj = JSON.parse(localStorage.getItem("myKey")) //спарсим его обратно объект
+	//console.log(returnObj)
+	answer(returnObj)
+   }
+   
+   }
+   else{
+   document.getElementById('go').style="display:none"
+   document.getElementById('menu').style="display:none"
+   returnObj = JSON.parse(localStorage.getItem("myKey"))
+   answer(returnObj)
+   }
+  // element.checked
+}
+function compareRandom(a, b) {
+  return Math.random() - 0.5;
+}
+function answer(data){
+
+var j=0
+data.forEach(function(item, i, arr) {
+
+//arr.length
+if(item.val === 0 && j===0){
+j++
+	document.getElementById('name1').innerHTML = item.name1
+	document.getElementById('name2').innerHTML = item.name2
+	//document.getElementById('schet').innerHTML = (i+1) +' / '+ arr.length
+  console.log( i + ": " + item.name1 +"_"+ item.name2  );
+}
+})
+}
+function next(name){
+var data= find(document.getElementById('name1').innerHTML,document.getElementById('name2').innerHTML,name )
+answer(data);
+
+}
+
+function find(name1,name2,ans){
+var count=0
+var returnObj = JSON.parse(localStorage.getItem("myKey"))
+returnObj.forEach(function(item, i, arr) {
+	if((item.name1 === name1)&&(item.name2 === name2)){
+		
+		returnObj[i].val= ans.slice(-1)
+	}
+	if(returnObj[i].val!==0){count++}
+})
+document.getElementById('schet').innerHTML = count +" из "+returnObj.length 
+localStorage.setItem("myKey", JSON.stringify(returnObj))
+if(count== returnObj.length ){document.getElementById('schet').innerHTML="<label>"+JSON.stringify(returnObj)+"</label>"}
+return returnObj;
+
+}
+
+</script>
+<br><br><div id="go" class="button1"style="margin-top: 10px;">ОТПРАВИТЬ </div>
+<div id="vopros"><div>Какой из этих критериев вам важнее?<div><br><br><div id="name1" onclick="next('name1')" class="button1"></div><div onclick="next('name2')" id="name2" class="button2"></div><div onclick="next('name3')" id="val" class="button3">Одинаковые</div><br><br><br><br><div id="schet"></div></div>
+</body>
+</html>
